@@ -38,10 +38,11 @@ export class ProjectsService {
         return of(this._projects);
     }
 
-    addProject(project: IProject): Observable<IProject> {
+    addProject(project: IProject): Observable<IProject[]> {
         project.projectId = uuidv4();
         this._projects.push(project);
-        return of(project);
+        console.log('called', this._projects);
+        return of(this._projects);
     }
     /*
 

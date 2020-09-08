@@ -18,6 +18,18 @@
     </ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-content>
-  Projects Content
+<ion-content padding>
+  <ion-input
+    placeholder="Project Name"
+    type="text"
+    [(ngModel)]="projectName">
+  </ion-input>
+  <ion-button (click)="addProject()">Add</ion-button>
+  <ion-list>
+    <ion-item *ngFor="let project of projects">
+      <ion-label>
+        {{ project.projectName }}
+      </ion-label>
+    </ion-item>
+  </ion-list>
 </ion-content>

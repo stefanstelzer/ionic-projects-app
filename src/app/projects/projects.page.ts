@@ -10,6 +10,7 @@ import { IProject } from './projects.interface';
 export class ProjectsPage implements OnInit {
 
   projects: IProject[] = null;
+  projectName: string = null;
 
   constructor(
       protected projectsService: ProjectsService
@@ -19,6 +20,17 @@ export class ProjectsPage implements OnInit {
     this.projects = await this.projectsService.projects.toPromise();
   }
 
-  
+  async addProject() {
+
+    if (this.projectName && this.projectName !== '') {
+      const project: IProject = {
+        projectName: this.projectName,
+        relatedAssignmentsIds: [],
+        projectToolName: ''
+      };
+      this.projects = await this.projectsService.addProject(project).toPromise();
+      this.projectName = null;
+    }
+  }
 
 }
