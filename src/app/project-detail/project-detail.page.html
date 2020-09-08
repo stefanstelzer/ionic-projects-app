@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      {{project?.projectName}}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-item *ngIf="project">
+    <ion-input
+            placeholder="Project Name"
+            type="text"
+            [(ngModel)]="project.projectName">
+    </ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-button (click)="updateProject(project)">Save</ion-button>
+  </ion-item>
+</ion-content>

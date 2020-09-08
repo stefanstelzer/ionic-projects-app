@@ -38,22 +38,24 @@ export class ProjectsService {
         return of(this._projects);
     }
 
+    getProjectById(projectId: string): Observable<IProject> {
+        return of(this._projects[this.getProjectIndex(projectId)]);
+    }
+
     addProject(project: IProject): Observable<IProject[]> {
         project.projectId = uuidv4();
         this._projects.push(project);
         return of(this._projects);
     }
-    /*
 
     updateProject(project: IProject): Observable<IProject> {
-        // TODO 1. serach for project index, 2. update project in index, 3. return updated project as Promise
-        return of(project);
+
+        return of(this._projects[this.getProjectIndex(project.projectId)]);
     }
 
-    private getProjectIndex(project: IProject): number {
+    private getProjectIndex(projectId: string): number {
 
-        return  this._projects.findIndex(project => project.projectId === project.projectId);
+        return this._projects.findIndex(project => project.projectId === projectId);
     }
-    */
 
 }
