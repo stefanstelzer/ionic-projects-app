@@ -13,6 +13,7 @@ import {NavController} from "@ionic/angular";
 export class ProjectDetailPage implements OnInit {
 
   project: IProject;
+  protected readonly backButtonText: string = 'Projects';
 
 
   constructor(

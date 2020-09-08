@@ -35,14 +35,17 @@ export class ProjectsService {
     }
 
     get projects(): Observable<IProject[]> {
+
         return of(this._projects);
     }
 
     getProjectById(projectId: string): Observable<IProject> {
+
         return of(this._projects[this.getProjectIndex(projectId)]);
     }
 
     addProject(project: IProject): Observable<IProject[]> {
+
         project.projectId = uuidv4();
         this._projects.push(project);
         return of(this._projects);
@@ -57,5 +60,4 @@ export class ProjectsService {
 
         return this._projects.findIndex(project => project.projectId === projectId);
     }
-
 }
