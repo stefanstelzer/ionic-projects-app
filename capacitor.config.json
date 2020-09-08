@@ -1,6 +1,6 @@
 {
   "appId": "io.ionic.starter",
-  "appName": "project-tracker-app",
+  "appName": "sidemenu",
   "bundledWebRuntime": false,
   "npmClient": "npm",
   "webDir": "www",
