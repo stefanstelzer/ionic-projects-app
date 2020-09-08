@@ -61,7 +61,7 @@ export class AssignmentsPage implements OnInit {
     this.dailyView.assignments.forEach((ass) => {
       checkResults.push(ass.project.projectId === project.projectId);
     });
-    return checkResults.every((value) => {
+    return checkResults.every((value: boolean) => {
       return value === false
     })
   }
