@@ -9,11 +9,16 @@ import { IProject } from './projects.interface';
 })
 export class ProjectsPage implements OnInit {
 
+  projects: IProject[] = null;
+
   constructor(
       protected projectsService: ProjectsService
   ) { }
 
-  ngOnInit() {
+  async ngOnInit() {
+    this.projects = await this.projectsService.projects.toPromise();
   }
+
+  
 
 }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {Observable, of} from 'rxjs';
-import { v4 as uuid } from 'uuid';
+import { v4 as uuidv4 } from 'uuid';
 import { IProject } from './projects.interface';
 
 @Injectable({
@@ -13,22 +13,22 @@ export class ProjectsService {
     constructor() {
         this._projects = [{
             projectName: 'FM Mobile',
-            projectId: uuid.v4(),
+            projectId: uuidv4(),
             projectToolName: 'Java Script',
             relatedAssignmentsIds: []
         }, {
             projectName: 'ECO - Emergency Communicator',
-            projectId: uuid.v4(),
+            projectId: uuidv4(),
             projectToolName: 'Apache Cordova',
             relatedAssignmentsIds: []
         }, {
             projectName: 'LIDL Phonebook',
-            projectId: uuid.v4(),
+            projectId: uuidv4(),
             projectToolName: 'Angular',
             relatedAssignmentsIds: []
         }, {
             projectName: 'LIDL Checklisten',
-            projectId: uuid.v4(),
+            projectId: uuidv4(),
             projectToolName: 'Angular',
             relatedAssignmentsIds: []
         }]
@@ -39,10 +39,11 @@ export class ProjectsService {
     }
 
     addProject(project: IProject): Observable<IProject> {
-        project.projectId = uuid.v4();
+        project.projectId = uuidv4();
         this._projects.push(project);
         return of(project);
     }
+    /*
 
     updateProject(project: IProject): Observable<IProject> {
         // TODO 1. serach for project index, 2. update project in index, 3. return updated project as Promise
@@ -53,5 +54,6 @@ export class ProjectsService {
 
         return  this._projects.findIndex(project => project.projectId === project.projectId);
     }
+    */
 
 }
