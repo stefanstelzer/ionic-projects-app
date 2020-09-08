@@ -10,12 +10,32 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
   styleUrls: ['app.component.scss']
 })
 export class AppComponent {
+
+  navigate: any[] = null;
+
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar
   ) {
     this.initializeApp();
+    this.sideMenu();
+  }
+
+  sideMenu() {
+    this.navigate =
+        [
+          {
+            title : "Projects",
+            url   : "/projects",
+            icon  : "albums-outline"
+          },
+          {
+            title : "Assignments",
+            url   : "/assignments",
+            icon  : "copy-outline"
+          }
+        ]
   }
 
   initializeApp() {
