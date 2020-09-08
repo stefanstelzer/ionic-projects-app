@@ -1,20 +1,42 @@
-<!--<ion-header>-->
-<!--  <ion-toolbar>-->
-<!--    <ion-title>assignments</ion-title>-->
-<!--  </ion-toolbar>-->
-<!--</ion-header>-->
-
-<!--<ion-content>-->
-
-<!--</ion-content>-->
-
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>
-      Assignments
+      Daily View
     </ion-title>
   </ion-toolbar>
 </ion-header>
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-label>Project</ion-label>
+      <ion-select [(ngModel)]="selectedProject" [value]="null" okText="Okay" cancelText="Dismiss" (ionChange)="setProject($event)">
+        <ion-select-option value="null" >Projects</ion-select-option>
+        <ion-select-option *ngFor="let project of projects" [value]="project">{{project.projectName}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>Time</ion-label>
+      <ion-input
+        placeholder="h" type="number" [(ngModel)]="bookedHours">
+      </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-button (click)="addProjectAssignment()">Add</ion-button>
+    </ion-item>
+  </ion-list>
+  <ion-list *ngIf="dailyView.assignments.length !== 0">
+    <ion-item *ngFor="let ass of dailyView.assignments">
+      <ion-label>{{ass.project.projectName}}</ion-label>
+      <ion-input disabled>{{ass.bookedHours}}h</ion-input>
+    </ion-item>
+  </ion-list>
+  <ion-list *ngIf="dailyView.sum > 0">
+    <ion-item>
+      <ion-label>Sum</ion-label>
+      <ion-input disabled>{{dailyView.sum}}h</ion-input>
+    </ion-item>
+  </ion-list>
+</ion-content>

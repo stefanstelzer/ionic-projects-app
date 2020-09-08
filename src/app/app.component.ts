@@ -31,8 +31,8 @@ export class AppComponent {
             icon  : "albums-outline"
           },
           {
-            title : "Assignments",
-            url   : "/assignments",
+            title : "Daily View",
+            url   : "/daily-view",
             icon  : "copy-outline"
           }
         ]
