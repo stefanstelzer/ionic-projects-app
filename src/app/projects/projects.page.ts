@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProjectsService } from './projects.service';
 import { IProject } from './projects.interface';
+import {NavController} from '@ionic/angular';
 
 @Component({
   selector: 'app-projects',
@@ -13,7 +14,8 @@ export class ProjectsPage implements OnInit {
   projectName: string = null;
 
   constructor(
-      protected projectsService: ProjectsService
+      protected projectsService: ProjectsService,
+      protected navCtrl: NavController
   ) { }
 
   async ngOnInit() {
@@ -31,6 +33,10 @@ export class ProjectsPage implements OnInit {
       this.projects = await this.projectsService.addProject(project).toPromise();
       this.projectName = null;
     }
+  }
+
+  showProjectDetails(project: IProject): void {
+
   }
 
 }

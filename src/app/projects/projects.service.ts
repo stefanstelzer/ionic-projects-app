@@ -41,7 +41,6 @@ export class ProjectsService {
     addProject(project: IProject): Observable<IProject[]> {
         project.projectId = uuidv4();
         this._projects.push(project);
-        console.log('called', this._projects);
         return of(this._projects);
     }
     /*

@@ -1,13 +1,3 @@
-<!--<ion-header>
-  <ion-toolbar>
-    <ion-title>projects</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content>
-
-</ion-content>-->
-
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
@@ -19,14 +9,20 @@
   </ion-toolbar>
 </ion-header>
 <ion-content padding>
-  <ion-input
-    placeholder="Project Name"
-    type="text"
-    [(ngModel)]="projectName">
-  </ion-input>
-  <ion-button (click)="addProject()">Add</ion-button>
   <ion-list>
-    <ion-item *ngFor="let project of projects">
+    <ion-item>
+      <ion-input
+        placeholder="Project Name"
+        type="text"
+        [(ngModel)]="projectName">
+      </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-button (click)="addProject()">Add</ion-button>
+    </ion-item>
+  </ion-list>
+  <ion-list>
+    <ion-item *ngFor="let project of projects" routerLink="/projects/{{project.projectId}}">
       <ion-label>
         {{ project.projectName }}
       </ion-label>
