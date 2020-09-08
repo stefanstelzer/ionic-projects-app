@@ -12,12 +12,19 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
-  <ion-item *ngIf="project">
+<ion-content *ngIf="project" padding>
+  <ion-item >
     <ion-input
             placeholder="Project Name"
             type="text"
             [(ngModel)]="project.projectName">
+    </ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input
+            placeholder="Project Name"
+            type="text"
+            [(ngModel)]="project.projectToolName">
     </ion-input>
   </ion-item>
   <ion-item>
