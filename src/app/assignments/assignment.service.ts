@@ -16,7 +16,7 @@ export class AssignmentsService {
         this._dailyViews = [
             {
                 dailyViewId: uuid4(),
-                date: new Date(),
+                date: '06.09.2020',
                 assignments: [
                     {
                         bookedHours: 3,
@@ -26,12 +26,21 @@ export class AssignmentsService {
                             projectToolName: 'Java Script',
                             relatedAssignmentsIds: []
                         }
+                    }, {
+                    bookedHours: 2,
+                        project: {
+                            projectName: 'LIDL Phonebook',
+                            projectId: uuidv4(),
+                            projectToolName: 'Angular',
+                            relatedAssignmentsIds: []
+                        }
                     }
-                ]
+                ],
+                sum: 5
             },
             {
                 dailyViewId: uuid4(),
-                date: new Date(),
+                date: '07.09.2020',
                 assignments: [
                     {
                         bookedHours: 3,
@@ -41,8 +50,41 @@ export class AssignmentsService {
                             projectToolName: 'Java Script',
                             relatedAssignmentsIds: []
                         }
+                    }, {
+                        bookedHours: 5,
+                        project: {
+                            projectName: 'FM Mobile',
+                            projectId: uuidv4(),
+                            projectToolName: 'Java Script',
+                            relatedAssignmentsIds: []
+                        }
                     }
-                ]
+                ],
+                sum: 8
+            },
+            {
+                dailyViewId: uuid4(),
+                date: '08.09.2020',
+                assignments: [
+                    {
+                        bookedHours: 3,
+                        project: {
+                            projectName: 'FM Mobile',
+                            projectId: uuidv4(),
+                            projectToolName: 'Java Script',
+                            relatedAssignmentsIds: []
+                        }
+                    }, {
+                        bookedHours: 2,
+                        project: {
+                            projectName: 'LIDL Phonebook',
+                            projectId: uuidv4(),
+                            projectToolName: 'Angular',
+                            relatedAssignmentsIds: []
+                        }
+                    }
+                ],
+                sum: 5
             },
         ];
     }
@@ -51,12 +93,6 @@ export class AssignmentsService {
 
         return of(this._dailyViews);
     }
-    /*
-    getProjectById(projectId: string): Observable<IProject> {
-
-        return of(this._projects[this.getProjectIndex(projectId)]);
-    }
-    */
 
     addDailyView(dailyView: IDailyView): Observable<IDailyView[]> {
 
@@ -64,13 +100,14 @@ export class AssignmentsService {
         this._dailyViews.push(dailyView);
         return of(this._dailyViews);
     }
-    /*
-    updateProject(project: IProject): Observable<IProject> {
 
-        return of(this._projects[this.getProjectIndex(project.projectId)]);
+    updateDailyView(dailyView: IDailyView): Observable<IDailyView> {
+
+        const dailyViewIndex = this.getDailyViewIndex(dailyView.dailyViewId);
+        this._dailyViews[dailyViewIndex] = dailyView;
+        console.log(this._dailyViews);
+        return of(this._dailyViews[dailyViewIndex]);
     }
-
-    */
 
     private getDailyViewIndex(dailyViewId: string): number {
 

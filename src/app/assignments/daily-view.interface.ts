@@ -4,7 +4,7 @@ export interface IDailyView {
 
     assignments?: [{bookedHours: number, project: IProject}] | any[];
     sum?:  number,
-    date: Date;
+    date: string;
     dailyViewId?: string;
     pauseInHours?: number;
     arrivalTime?: number;

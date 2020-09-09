@@ -53,7 +53,9 @@ export class ProjectsService {
 
     updateProject(project: IProject): Observable<IProject> {
 
-        return of(this._projects[this.getProjectIndex(project.projectId)]);
+        const projectIndex = this.getProjectIndex(project.projectId);
+        this._projects[projectIndex] = project;
+        return of(this._projects[projectIndex]);
     }
 
     private getProjectIndex(projectId: string): number {

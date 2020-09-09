@@ -3,6 +3,8 @@ import { AssignmentsService } from './assignment.service';
 import { IProject } from '../projects/projects.interface';
 import { IDailyView } from './daily-view.interface';
 import { ProjectsService } from '../projects/projects.service';
+import * as moment from 'moment';
+import { uuid4 } from '@capacitor/core/dist/esm/util';
 
 @Component({
   selector: 'app-assignments',
@@ -12,14 +14,17 @@ import { ProjectsService } from '../projects/projects.service';
 export class AssignmentsPage implements OnInit {
 
   projects: IProject[] = null;
-  dailyViews: IDailyView[] = null;
+  dailyViews: IDailyView[] = [];
   dailyView: IDailyView = {
-    date: new Date(),
+    date: moment(new Date()).format('DD.MM.YYYY'),
     assignments: [],
-    sum: 0
+    sum: 0,
+    dailyViewId: uuid4()
   }
   bookedHours: number = 0;
   selectedProject: IProject = null;
+  maxIndex: number = 0;
+  actualIndex: number = 0;
 
 
   constructor(
@@ -30,12 +35,37 @@ export class AssignmentsPage implements OnInit {
   async ngOnInit() {
 
     this.projects = await this.projectsService.projects.toPromise();
-    this.dailyViews = await this.assignmentService.dailyViews.toPromise();
+    this.dailyViews = await this.assignmentService.addDailyView(this.dailyView).toPromise();
+    this.dailyView = this.dailyViews[this.dailyViews.length-1];
+    this.maxIndex = this.dailyViews.length-1;
+    this.actualIndex = this.maxIndex;
   }
 
   setProject($event) {
 
     this.selectedProject = <IProject>$event.target.value;
+  }
+
+  nextDailyView(): void {
+
+    if (this.actualIndex < this.maxIndex) {
+      this.actualIndex++;
+      this.dailyView = this.dailyViews[this.actualIndex];
+    } else {
+      this.actualIndex = 0;
+      this.dailyView = this.dailyViews[this.actualIndex];
+    }
+  }
+
+  previousDailyView(): void {
+
+    if (this.actualIndex > 0) {
+      this.actualIndex--;
+      this.dailyView = this.dailyViews[this.actualIndex]
+    } else {
+      this.actualIndex = this.maxIndex;
+      this.dailyView = this.dailyViews[this.actualIndex];
+    }
   }
 
   async addProjectAssignment() {
@@ -49,6 +79,7 @@ export class AssignmentsPage implements OnInit {
       }
       this.dailyView.sum += this.bookedHours;
       this.dailyView.assignments.push(assignment);
+      await this.assignmentService.updateDailyView(this.dailyView).toPromise();
       this.selectedProject = null;
       this.bookedHours = 0;
     }
