@@ -102,7 +102,6 @@ export class AssignmentsService {
 
     addDailyView(dailyView: IDailyView): Observable<IDailyView[]> {
 
-        dailyView.dailyViewId = uuidv4();
         this._dailyViews.push(dailyView);
         return of(this._dailyViews);
     }
