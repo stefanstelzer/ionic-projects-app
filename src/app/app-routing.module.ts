@@ -20,7 +20,7 @@ const routes: Routes = [
     loadChildren: () => import('./project-detail/project-detail.module').then( m => m.ProjectDetailPageModule)
   },
   {
-    path: 'assignments/:id',
+    path: 'assignments/:assignmentId/:dailyViewId',
     loadChildren: () => import('./assignments-detail/assignments-detail.module').then( m => m.AssignmentsDetailPageModule)
   },
 ];

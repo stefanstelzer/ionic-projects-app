@@ -33,9 +33,9 @@
     </ion-item>
   </ion-list>
   <ion-list *ngIf="dailyView.assignments.length !== 0">
-    <ion-item *ngFor="let ass of dailyView.assignments">
+    <ion-item *ngFor="let ass of dailyView.assignments" routerLink="/assignments/{{ass.assignmentId}}/{{dailyView.dailyViewId}}">
       <ion-label>{{ass.project.projectName}}</ion-label>
-      <ion-input disabled>{{ass.bookedHours}}h</ion-input>
+      <ion-label>{{ass.bookedHours}}h</ion-label>
     </ion-item>
   </ion-list>
   <ion-list *ngIf="dailyView.sum > 0">

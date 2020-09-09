@@ -110,8 +110,14 @@ export class AssignmentsService {
 
         const dailyViewIndex = this.getDailyViewIndex(dailyView.dailyViewId);
         this._dailyViews[dailyViewIndex] = dailyView;
-        console.log(this._dailyViews);
         return of(this._dailyViews[dailyViewIndex]);
+    }
+
+    getDailyViewById(dailyViewId: string): Observable<IDailyView> {
+
+        return of(this._dailyViews.filter((dailyView) => {
+            return dailyView.dailyViewId === dailyViewId
+        })[0]);
     }
 
     private getDailyViewIndex(dailyViewId: string): number {

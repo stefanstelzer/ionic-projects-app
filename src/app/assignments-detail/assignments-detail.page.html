@@ -1,9 +1,30 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>assignments-detail</ion-title>
+    <ion-title>Time</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button
+              [text]="backButtonText"
+              [icon]="">
+      </ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-
+<ion-content *ngIf="assignment" padding>
+  <ion-item>
+    <ion-label>{{assignment.project.projectName}}</ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-input
+      placeholder="time"
+      type="number"
+      [(ngModel)]="assignment.bookedHours">
+    </ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-button (click)="updateAssignment(assignment)">Save</ion-button>
+  </ion-item>
+  <ion-item>
+    <ion-button color="danger" (click)="deleteAssignment(assignment)">Delete</ion-button>
+  </ion-item>
 </ion-content>
