@@ -74,6 +74,7 @@ export class AssignmentsPage implements OnInit {
         this.bookedHours !== 0
         && this.isProjectNotInAssignmentList(this.selectedProject)) {
       const assignment = {
+        assignmentId: uuid4(),
         bookedHours: this.bookedHours,
         project: this.selectedProject
       }

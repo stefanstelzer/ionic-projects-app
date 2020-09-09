@@ -19,6 +19,7 @@ export class AssignmentsService {
                 date: '06.09.2020',
                 assignments: [
                     {
+                        assignmentId: uuidv4(),
                         bookedHours: 3,
                         project: {
                             projectName: 'FM Mobile',
@@ -27,6 +28,7 @@ export class AssignmentsService {
                             relatedAssignmentsIds: []
                         }
                     }, {
+                    assignmentId: uuidv4(),
                     bookedHours: 2,
                         project: {
                             projectName: 'LIDL Phonebook',
@@ -43,6 +45,7 @@ export class AssignmentsService {
                 date: '07.09.2020',
                 assignments: [
                     {
+                        assignmentId: uuidv4(),
                         bookedHours: 3,
                         project: {
                             projectName: 'ECO - Emergency Communicator',
@@ -51,6 +54,7 @@ export class AssignmentsService {
                             relatedAssignmentsIds: []
                         }
                     }, {
+                        assignmentId: uuidv4(),
                         bookedHours: 5,
                         project: {
                             projectName: 'FM Mobile',
@@ -67,6 +71,7 @@ export class AssignmentsService {
                 date: '08.09.2020',
                 assignments: [
                     {
+                        assignmentId: uuidv4(),
                         bookedHours: 3,
                         project: {
                             projectName: 'FM Mobile',
@@ -75,6 +80,7 @@ export class AssignmentsService {
                             relatedAssignmentsIds: []
                         }
                     }, {
+                        assignmentId: uuidv4(),
                         bookedHours: 2,
                         project: {
                             projectName: 'LIDL Phonebook',
